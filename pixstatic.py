@@ -8,7 +8,7 @@ MAXPIXID, BCB)
 
 @dataclass
 class EMVStatic:
-    def __init__(self, name, city, txid, key) -> None:
+    def __init__(self, name, city, txid, key, value) -> None:
         #PixKey
         self.PK = key[:MAXPIXID]
         
@@ -26,6 +26,14 @@ class EMVStatic:
         #TransactionCurrency
         self.TC = TXCURRENCY
         
+        #TransactionAmount
+        if len(value) <= 9:
+            self.PAY = f'0{len(value)}{value}'
+        else:
+            self.PAY = f'{len(value)}{value}'
+            
+        self.TA = f"54{self.PAY}"
+               
         #CountryCode
         self.CC = COUNTRYCODE
         
@@ -49,13 +57,14 @@ class EMVStatic:
             self.TXID = f'050{len(txid[:MAXTID])}{txid[:MAXTID]}'
         else:
             self.TXID = f'05{len(txid[:MAXTID])}{txid[:MAXTID]}'
+   
         self.ADFT = f'62{len(self.TXID)}{self.TXID}'
         
         #CRC16Header
         self.CRC = '6304'
         
     def raw(self):
-        return self.PFI+self.MAI+self.MCC+self.TC+\
+        return self.PFI+self.MAI+self.MCC+self.TC+self.TA+\
             self.CC+self.MNH+self.MC+self.ADFT+self.CRC
         
     def gencrc(self):
@@ -67,4 +76,5 @@ class EMVStatic:
                   )
     
     def gen(self):
+        print(self.raw()+self.gencrc()[2:].upper())
         return self.raw()+self.gencrc()[2:].upper()   
