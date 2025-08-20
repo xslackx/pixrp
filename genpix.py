@@ -1,5 +1,7 @@
-from consts import PKEY,PNAME,PCITY
 import pixstatic
+from dotenv import dotenv_values
+
+secret = { **dotenv_values('.env') }
 
 def tx_user(txid, value):
-    return pixstatic.EMVStatic(PNAME, PCITY, txid, PKEY, value).gen()
+    return pixstatic.EMVStatic(secret["PNAME"], secret["PCITY"], txid, secret["PKEY"], value).gen()

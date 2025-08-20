@@ -8,7 +8,3 @@ MAXNAMEMERCHANT = 17
 MAXTID = 25
 MAXPIXID = 36
 BCB = '0014br.gov.bcb.pix01'
-
-PKEY=""
-PNAME=""
-PCITY=""
