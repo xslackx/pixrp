@@ -7,7 +7,7 @@
 flask --app app run
 ```
 
-http://127.0.0.1:5000/pix?txid="RANDOMCODE"
+http://127.0.0.1:5000/pix?txid="RANDOMCODE"&value=1
 
 ## MUST BE changed inside consts.py
 - set PKEY, PNAME, PCITY
