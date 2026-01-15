@@ -1,7 +1,13 @@
 from flask import Flask, request
 from genpix import tx_user
+from dotenv import dotenv_values
+from flask_cors import CORS
 
 app = Flask(__name__)
+yes = { **dotenv_values('.cors') }
+cors = CORS(app, resources=yes["allow"],
+            max_age="10",
+            methods=["GET"])
 
 @app.route("/")
 def hello_world() -> str:
