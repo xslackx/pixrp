@@ -16,6 +16,11 @@ http://127.0.0.1:5000/pix?txid=RANDOMCODE&value=1
 - PNAME = Merchant Name
 - PCITY = Merchant City
 
+## Sizes 
+
+- PKEY MAX LENGTH 36
+- TXID MAX LENGTH 25
+
 ## MUST BE include inside .cors file
 .cors.example included
 

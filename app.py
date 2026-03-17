@@ -24,4 +24,3 @@ def generate_static_pix() -> dict:
                 }
     else: 
         return {"status": "fail", "code": ""}
-    
