@@ -6,7 +6,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 yes = { **dotenv_values('.cors') }
 cors = CORS(app, resources=yes["allow"],
-            max_age="10",
+            max_age="180",
             methods=["GET"])
 
 @app.route("/")
