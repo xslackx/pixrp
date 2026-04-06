@@ -4,7 +4,7 @@
 - done
 
 ```
-flask --app app run
+source bin/activate && python3 app.py
 ```
 
 http://127.0.0.1:5000/pix?txid=RANDOMCODE&value=1
